@@ -1,1 +1,26 @@
+name: Wifi ID Card Checker
 
+on:
+  schedule:
+    - cron: "0 */6 * * *"   # ทุก 6 ชั่วโมง
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Playwright
+        run: |
+          npm install playwright
+          npx playwright install --with-deps
+
+      - name: Run checker
+        run: node check.js
