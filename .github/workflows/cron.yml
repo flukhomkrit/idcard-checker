@@ -2,7 +2,7 @@ name: Wifi ID Card Checker
 
 on:
   schedule:
-    - cron: "0 */6 * * *"   # ทุก 6 ชั่วโมง
+    - cron: "*/10 * * * *"   # ทุก 10 นาที
   workflow_dispatch:
 
 jobs:
@@ -24,3 +24,4 @@ jobs:
 
       - name: Run checker
         run: node check.js
+
